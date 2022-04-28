@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean is_OPerator_Clicked = false;
     Boolean is_Dot_Clicked = false;
     Boolean is_Equal_Clicked = false;
+    Boolean is_start = true;
 
 
     @Override
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!is_Dot_Clicked){
+                if(!is_Dot_Clicked && !is_Equal_Clicked){
                     is_Dot_Clicked = true;
                     getValueofButton(button_dot,textView);
                 }
@@ -84,13 +85,18 @@ public class MainActivity extends AppCompatActivity {
                     is_Equal_Clicked = true;
                     operand2 = Double.parseDouble(textView.getText().toString());
                     result = calculateResult(operand1,operand2,operator);
+                    if(result - java.lang.Math.floor(result) == 0){
+                        textView.setText(Integer.toString(((int)result)));
+                        return;
+                    }
                     textView.setText(Double.toString(result));
 
 
-                    }
+                }
                     //result = calculateResult(operand1,operand2,operator);
 
-                }
+            }
+
 
         });
     }
@@ -99,8 +105,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View v) {
-                if(!is_Equal_Clicked){
 
+                if(is_Equal_Clicked){
+                    textView.setText(null);
+                    is_Equal_Clicked = false;
+                    is_OPerator_Clicked = false;
+                    is_Dot_Clicked = false;
                 }
                 getValueofButton(button, textView);
             }
@@ -112,6 +122,25 @@ public class MainActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
+                    if(is_Equal_Clicked == true){
+                        if(is_OPerator_Clicked){
+                            operand1 = result;
+                            is_Equal_Clicked = false;
+                            is_OPerator_Clicked = true;
+                            is_Dot_Clicked = false;
+                            getOperator(button, textView);
+                            return;
+                        }
+
+                    }
+                    if(is_start == true){
+                        is_OPerator_Clicked = true;
+                        is_Dot_Clicked = false;
+                        is_Equal_Clicked = false;
+                        is_start = false;
+                        operand1 = 0;
+                        getOperator(button, textView);
+                    }
                     if(!is_OPerator_Clicked){
                         is_OPerator_Clicked = true;
                         is_Dot_Clicked = false;
