@@ -85,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
                     operand2 = Double.parseDouble(textView.getText().toString());
                     result = calculateResult(operand1,operand2,operator);
                     textView.setText(Double.toString(result));
+
+
                     }
-                textView.setText(null);
-                textView.setHint(0);
-            }
+                    //result = calculateResult(operand1,operand2,operator);
+
+                }
 
         });
     }
