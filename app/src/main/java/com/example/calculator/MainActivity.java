@@ -82,29 +82,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!is_Equal_Clicked){
                     is_Equal_Clicked = true;
-
-
+                    operand2 = Double.parseDouble(textView.getText().toString());
+                    result = calculateResult(operand1,operand2,operator);
+                    textView.setText(Double.toString(result));
                     }
-                    //result = calculateResult(operand1,operand2,operator);
-
-                }
+                textView.setText(null);
+                textView.setHint(0);
+            }
 
         });
     }
     public void custumOnClick(Button button, TextView textView) {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
+
             public void onClick(View v) {
+                if(!is_Equal_Clicked){
+
+                }
                 getValueofButton(button, textView);
             }
         });
     }
     public void operatorOnClick(Button button, TextView textView){
-        if(!is_OPerator_Clicked){
-            CharSequence op1 = textView.getText();
-            String oper1 = textView.getText().toString();
-            //operand1 = Double.valueOf(oper1);
-            }
+
 
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         is_OPerator_Clicked = true;
                         is_Dot_Clicked = false;
                         is_Equal_Clicked = false;
-
+                        operand1 = Double.parseDouble(textView.getText().toString());
                         getOperator(button, textView);
                     }
 

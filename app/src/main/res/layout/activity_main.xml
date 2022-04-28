@@ -26,7 +26,7 @@
         android:layout_width="78dp"
         android:layout_height="65dp"
         android:text="C"
-        android:textColor="#FF0808"
+        android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/button22"
