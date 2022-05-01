@@ -85,10 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     is_Equal_Clicked = true;
                     operand2 = Double.parseDouble(textView.getText().toString());
                     result = calculateResult(operand1,operand2,operator);
-                    if(result - java.lang.Math.floor(result) == 0){
-                        textView.setText(Integer.toString(((int)result)));
-                        return;
-                    }
+                    
                     textView.setText(Double.toString(result));
 
 
